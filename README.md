@@ -1,4 +1,5 @@
-# Getting Started with Create React App
+# Fairness First: A Visual Analytic Approach to Exploring Fairness in
+Pre-Processing Permutations
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
