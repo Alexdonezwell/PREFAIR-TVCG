@@ -1,6 +1,6 @@
 # Fairness First: A Visual Analytic Approach to Exploring Fairness in Pre-Processing Permutations
 
-PreFair is a visual analytics system designed to assist machine learning model builders in exploring the trade-offs between various pre-processing strategies
+PreFair is a visual analytics system designed to assist machine learning model builders in exploring the trade-offs between various pre-processing strategies. The entire system is packaged within a Docker container for easier installation and deployment. Currently Docker container does not support deployment on Mac M1/M2 chips, https://www.docker.com/blog/apple-silicon-m1-chips-and-docker/
 
 ### Docker
 
