@@ -11,7 +11,7 @@ Install and run web server:
 docker build . -t web && docker run -p 3000:3000 web
 ```
 
-Install and run api server:
+Install and run the Python api server:
 ```
 cd api
 docker build . -t api && docker run -p 14324:14324 api
@@ -20,12 +20,15 @@ docker build . -t api && docker run -p 14324:14324 api
 
 ### Deploy with npm
 
+For computers that are using Mac M1/M2 chips, please use npm package manager to deploy the PreFair system on your local machine. You can install node.js and npm from https://docs.npmjs.com/downloading-and-installing-node-js-and-npm. Please note that the dependent Python libraries are listed in the api/requirement.txt.
+
+Install and run web server:
 ```
 npm install
 npm start
 ```
 
-Install and run api server:
+Install and run the Python api server:
 ```
 cd api
 python api
