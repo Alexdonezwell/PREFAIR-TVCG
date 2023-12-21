@@ -31,5 +31,5 @@ npm start
 Install and run the Python api server:
 ```
 cd api
-python api
+python api.py
 ```
