@@ -5,13 +5,14 @@ PreFair is a visual analytics system designed to assist machine learning model b
 ### Deploy with Docker
 
 For computers that are not using Mac M1/M2 chips, please make sure the Docker container has been installed on your computer before running the following commands. You can install the Docker container from https://www.docker.com/get-started/.
+For Mac users, please open the Docker application and make sure Docker is running in the background, then open the terminal to input the following commands.
 
 Install and run web server:
 ```
 docker build . -t web && docker run -p 3000:3000 web
 ```
 
-Install and run the Python api server:
+Open a new terminal, Install and run the Python api server:
 ```
 cd api
 docker build . -t api && docker run -p 14324:14324 api
