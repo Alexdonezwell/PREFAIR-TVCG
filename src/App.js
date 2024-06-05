@@ -185,7 +185,7 @@ class App extends React.Component {
         const height1 = (window.innerHeight - 150) * 0.7;
         const height2 = 300;
         const height = (window.innerHeight - 150) * 0.5;
-        const step1height = height * 0.8 - 50;
+        const step1height = height * 0.9;
         const step2height = 350;
         const step3height = height * 0.5 - 30;
         const width = window.screen.width / 2;
@@ -2465,7 +2465,7 @@ class App extends React.Component {
                                     <div className="text">1.Pre-processing Operation Filter Panel <a data-tip data-for='first_tip' style={{ color: 'black' }}> <QuestionCircleOutlined /> </a> </div>
                                 </div>
                                 <div className="content">
-                                    {stepButtons}
+                                    {/* {stepButtons} */}
                                 </div>
                                 <div className='graphics'>
                                     <ReactEcharts
