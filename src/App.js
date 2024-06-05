@@ -2520,7 +2520,9 @@ class App extends React.Component {
                                             notMerge={true}
                                             lazyUpdate={true}
                                             onEvents={this.onRadarEvents}
-                                            style={{ width: '480px', height: '320px' }}
+                                            style={{ 
+                                                // width: '480px', 
+                                            height: '320px' }}
                                         />
                                         <div id="radarNote">
                                             {/* <strong>Note:</strong> Every cluster in the radar chart indicates the centroid strategy's performance of that cluster. */}
