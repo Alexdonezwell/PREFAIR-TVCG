@@ -886,6 +886,30 @@ class App extends React.Component {
 
         const ids = this.state.scatterData.groupIDs[groupId];
         this.onSelectedRuleListItems(ids, groupId);
+        
+        // Shaojun Yu
+        // groupId == 0
+        if (groupId == 0) {
+            // set background-color to rgb(102, 194, 165) for div.histogra-area div.in-range
+            // append to global css
+            var style = `
+                div.histogra-area div.in-range {
+                background-color: rgb(102, 194, 165);
+                z-index: 1;
+                }
+            `
+            document.head.appendChild(document.createElement('style')).innerHTML = style;
+        }
+        if (groupId == 1) {
+        //     // rgb(252, 141, 98)
+            var style = `
+                div.histogra-area div.in-range {
+                background-color: rgb(252, 141, 98);
+                z-index: 1;
+                }
+            `
+            document.head.appendChild(document.createElement('style')).innerHTML = style;
+        }
     }
     hightlightTreeData = () => {
         const clusters = this.state.step2select;
