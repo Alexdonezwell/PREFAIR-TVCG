@@ -2376,7 +2376,7 @@ class App extends React.Component {
                 const info2 = {
                     data: that.state.treeDiagramData[index],
                     //width: 1300,
-                    width: that.state.screenWidth,
+                    width: that.state.screenWidth * 1.2,
                     height: 1100
                 };
                 return (
