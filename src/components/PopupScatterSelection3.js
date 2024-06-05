@@ -33,7 +33,7 @@ class PopupScatterSelection extends React.Component {
             }
         }
 
-        console.log(index, type);
+        // console.log(index, type);
         if(index==2 && type=='kmeans'){
             return max.toFixed(2);
         }

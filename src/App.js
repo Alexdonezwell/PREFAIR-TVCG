@@ -201,7 +201,19 @@ class App extends React.Component {
 
     updateClustersRate = (isInit) => {
         const ids = this.getHighLightIDs();
-        // const ids = this.state.highLight;
+        
+        // Shaojun Yu 2024/06/05
+        // use all ids if no highLight
+        if (ids.length == 0) {
+            for (let i = 0; i < this.state.step1Data.length; i++) {
+                ids.push(this.state.step1Data[i].id);
+            }
+        }
+        // highligth all ids
+        this.setState({
+            highLight: ids
+        });
+
         let dataToBeSent = { selectedIds: ids };
         let that = this;
         $.ajax({
