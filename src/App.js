@@ -2498,7 +2498,7 @@ class App extends React.Component {
                                                 option={this.getScatterOption()}
                                                 notMerge={true}
                                                 lazyUpdate={true}
-                                                style={{ width: '480px', height: '320px' }}
+                                                style={{ width: '100%', height: '320px' }}
                                                 onEvents={{
                                                     'click': scatterOnClick
                                                 }}
