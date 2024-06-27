@@ -139,31 +139,54 @@ class TreeComponent extends React.Component {
                         textX = 45;
                     }
                     return (
-                        <g key={i} transform={`translate(${node.y}, ${node.x - 10})`}>
+                      <g
+                        key={i}
+                        transform={`translate(${node.y}, ${node.x - 10})`}
+                      >
                         <defs>
-                            <marker id="arrow"
-                                markerUnits="strokeWidth"
-                                markerWidth={CONSTANT.MARKER.MARKERWIDTH}
-                                markerHeight={CONSTANT.MARKER.MARKERHIEGHT}
-                                viewBox={CONSTANT.MARKER.VIEWBOX}
-                                refX={CONSTANT.MARKER.REFX}
-                                refY={CONSTANT.MARKER.REFY}
-                                orient={CONSTANT.MARKER.ORIENT}>
-                                <path d={CONSTANT.MARKER.PATH} fill={CONSTANT.MARKER.FILL} />
-                            </marker>
+                          <marker
+                            id="arrow"
+                            markerUnits="strokeWidth"
+                            markerWidth={CONSTANT.MARKER.MARKERWIDTH}
+                            markerHeight={CONSTANT.MARKER.MARKERHIEGHT}
+                            viewBox={CONSTANT.MARKER.VIEWBOX}
+                            refX={CONSTANT.MARKER.REFX}
+                            refY={CONSTANT.MARKER.REFY}
+                            orient={CONSTANT.MARKER.ORIENT}
+                          >
+                            <path
+                              d={CONSTANT.MARKER.PATH}
+                              fill={CONSTANT.MARKER.FILL}
+                            />
+                          </marker>
                         </defs>
                         <g>
-                            <rect
-                                rect x='0' y='0' width='100' height='30'
-                                rx='5' ry='5'
-                                fill='#40a9ff'
-                                style={{borderRadius: '60px'}}
-                                onDrop={(event) => this.props.onDrop(event, node)}
-                                onClick={(event) => this.nodeActive(event, node)}>
-                            </rect>
-                            <text x={textX} y="20" fontFamily="Verdana" fontSize={fontSize} fill="#fff">{node.name}</text>
+                          <rect
+                            rect
+                            x="0"
+                            y="0"
+                            width="100"
+                            height="30"
+                            rx="5"
+                            ry="5"
+                            fill="#40a9ff"
+                            style={{ borderRadius: "60px" }}
+                            onDrop={(event) => this.props.onDrop(event, node)}
+                            onClick={(event) => this.nodeActive(event, node)}
+                          ></rect>
+                          <text
+                            x={textX}
+                            y="20"
+                            fontFamily="Verdana"
+                            fontSize={fontSize}
+                            onClick={(event) => this.nodeActive(event, node)}
+                            fill="#fff"
+                          >
+                            {node.name}
+                          </text>
                         </g>
-                    </g>)
+                      </g>
+                    );
                 })}
             </g>
             </g>
