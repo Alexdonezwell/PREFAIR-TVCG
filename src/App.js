@@ -2725,7 +2725,7 @@ class App extends React.Component {
                   <div style={{ textAlign: "right" }}>
                     <Button
                       type="primary"
-                      size="large"
+                      size="small"
                       onClick={() => this.clickStep3()}
                     >
                       Run Clustering
