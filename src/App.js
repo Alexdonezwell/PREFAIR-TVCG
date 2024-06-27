@@ -169,6 +169,8 @@ class App extends React.Component {
     selectedStep1Line: -1,
     // yusj
     hoveredStep1Line: -1,
+    // Shaojun Yu 2024/06/27
+    customizedStep1Line: -1,
   };
   treeInfo = {
     data: data,
@@ -1485,6 +1487,10 @@ class App extends React.Component {
           color = "black";
           width = 3;
         }
+        if (index == this.state.customizedStep1Line) {
+          color = "rgb(0, 255, 255)";
+          width = 3;
+        }
 
         let da = {
           type: "parallel",
@@ -1628,6 +1634,25 @@ class App extends React.Component {
     treeAncestors = treeAncestors.reverse();
     const url = apiDomain + "step6";
     let p = { data: treeAncestors.join("-") };
+
+    // Shaojun, match this.state.step1Data to get the index of the selected item, so that we can highlight the line in parallel plot
+    let step1Data = this.state.step1Data;
+    // console.log(step1Data);
+    let selectedStep1Line = -1;
+    for (let i = 0; i < step1Data.length; i++) {
+      if (
+        step1Data[i].row.replaceAll(" ", "") ==
+        treeAncestors.join(",").replaceAll(" ", "")
+      ) {
+        selectedStep1Line = i;
+        console.log(selectedStep1Line);
+        console.log("found");
+        self.setState({
+          customizedStep1Line: selectedStep1Line,
+        });
+        break;
+      }
+    }
 
     axios.post(url, p).then(function (resp) {
       let data = resp.data;
