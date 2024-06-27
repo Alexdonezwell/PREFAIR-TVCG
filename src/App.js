@@ -1230,6 +1230,9 @@ class App extends React.Component {
         right: 0,
         orient: "vertical",
         data: legendData,
+        textStyle: {
+          fontSize: 10
+        },
       },
       radar: {
         // shape: 'circle',
@@ -1912,6 +1915,9 @@ class App extends React.Component {
         right: 0,
         orient: "vertical",
         data: legendData,
+        textStyle: {
+          fontSize: 10,
+        },
       },
       radar: {
         id: "radarArea",
