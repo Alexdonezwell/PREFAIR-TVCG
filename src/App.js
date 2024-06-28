@@ -1123,9 +1123,9 @@ class App extends React.Component {
       });
     }
     if (radarTreeData.length > 0) {
-      legendData.push("Hovered Strategy");
+      legendData.push("Hovered");
       seriesData.push({
-        name: "Hovered Strategy",
+        name: "Hovered",
         type: "radar",
         symbol: "none",
         colorBy: "series",
@@ -1825,9 +1825,9 @@ class App extends React.Component {
       });
     }
     if (radarTreeData.length > 0) {
-      legendData.push("Hovered Strategy");
+      legendData.push("Hovered");
       seriesData.push({
-        name: "Hovered Strategy",
+        name: "Hovered",
         type: "radar",
         symbol: "none",
         colorBy: "series",
@@ -1965,13 +1965,13 @@ class App extends React.Component {
           },
         },
         indicator: [
-          { name: "Accuracy\n(0,1)", max: 1 },
-          { name: "Precision\n(0,1)", max: 1 },
-          { name: "Recall\n(0,1)", max: 1 },
-          { name: "SPD\n(-inf,0)", max: 1 },
-          { name: "EOD\n(-inf,0)", max: 1 },
-          { name: "DI\nimpact\n(0,1)", max: 1 },
-          { name: "ERR\n(0,1)", max: 1 },
+          { name: "Accuracy\n(0.7,0.77)", max: 1 },
+          { name: "Precision\n(0.8,0.9)", max: 1 },
+          { name: "Recall\n(0.75,0.85)", max: 1 },
+          { name: "SPD\n(-0.25,0)", max: 1 },
+          { name: "EOD\n(-0.25,0)", max: 1 },
+          { name: "DI\n(0.7,1)", max: 1 },
+          { name: "ERR\n(0,0.2)", max: 1 },
         ],
         axisName: {
           color: "#888",
