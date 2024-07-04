@@ -1206,6 +1206,7 @@ class App extends React.Component {
         const minVal = Math.min(...colData);
         const maxVal = Math.max(...colData);
         normalData.push(scatterSelectedItemData[key]);
+        // console.log(key, maxVal, minVal)
       }
 
       legendData.push("Selected Strategy");
@@ -1262,13 +1263,13 @@ class App extends React.Component {
           },
         },
         indicator: [
-          { name: "Accuracy\n(0.7,0.77)", max: 0.77, min: 0.7 },
-          { name: "Precision\n(0.8,0.9)", max: 0.9, min: 0.8 },
-          { name: "Recall\n(0.75,0.85)", max: 0.85, min: 0.75 },
-          { name: "SPD\n(-0.25,0)", max: 0, min: -0.25 },
-          { name: "EOD\n(-0.25,0)", max: 0, min: -0.25 },
-          { name: "DI\n(0.7,1)", max: 1, min: 0.7 },
-          { name: "ERR\n(0,0.2)", max: 0.2, min: 0 },
+          { name: "Accuracy\n(0.7,0.77)", max: 0.764, min: 0.701 },
+          { name: "Precision\n(0.8,0.9)", max: 0.883, min: 0.814 },
+          { name: "Recall\n(0.75,0.85)", max: 0.823, min: 0.754 },
+          { name: "SPD\n(-0.25,0)", max: -0.01, min: -0.232 },
+          { name: "EOD\n(-0.25,0)", max: -0.03, min: -0.242 },
+          { name: "DI\n(0.7,1)", max: 0.989, min: 0.71 },
+          { name: "ERR\n(0,0.2)", max: 0.168, min: 0.017 },
         ],
         axisName: {
           color: "#888",
@@ -2510,7 +2511,7 @@ class App extends React.Component {
                   if (k == 2) {
                     let children =
                       newarr["children"][level1]["children"][level2][
-                        "children"
+                      "children"
                       ];
                     for (let item in children) {
                       if (children[item]["name"].trim() == da) {
@@ -2535,7 +2536,7 @@ class App extends React.Component {
           }
         }
       })
-      .catch(function (err) {});
+      .catch(function (err) { });
   }
 
   render() {
