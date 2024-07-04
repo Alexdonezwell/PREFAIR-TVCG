@@ -1825,6 +1825,30 @@ class App extends React.Component {
       });
     }
     if (radarTreeData.length > 0) {
+      // tree hoverd data
+      // rescale the data
+      // bug fix
+      const radarList = [
+        "acc",
+        "precision",
+        "recall",
+        "statistical",
+        "equal",
+        "disparate",
+        "error",
+      ];
+      const allData = this.state.step1Data;
+
+      let normalData = [];
+      for (let i = 0; i < radarList.length; i++) {
+        const key = radarList[i];
+        const colData = allData.map((x) => x[key]);
+        const minVal = Math.min(...colData);
+        const maxVal = Math.max(...colData);
+        normalData.push(
+          (radarTreeData[0].value[i] - minVal) / (maxVal - minVal)
+        );
+      }
       legendData.push("Hovered");
       seriesData.push({
         name: "Hovered",
@@ -1841,7 +1865,7 @@ class App extends React.Component {
         itemStyle: {
           color: "black",
         },
-        data: radarTreeData,
+        data: [normalData],
       });
     }
     if (radarCustimizedTreeData.length > 0) {
