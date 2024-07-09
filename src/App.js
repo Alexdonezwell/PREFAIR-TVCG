@@ -2769,7 +2769,7 @@ class App extends React.Component {
                     </a>{" "}
                   </div>
                 </div>
-                <div className="content">{/* {stepButtons} */}</div>
+                <div className="content">{stepButtons}</div>
                 <div className="graphics">
                   <ReactEcharts
                     notMerge={true}
