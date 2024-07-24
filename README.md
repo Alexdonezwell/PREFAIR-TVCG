@@ -32,6 +32,6 @@ npm start
 Install and run the Python api server:
 ```
 cd api
-pip install -r requirement.txt
+pip install -r requirements.txt
 python api.py
 ```
