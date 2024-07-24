@@ -1,71 +1,72 @@
 import pandas as pd
 import numpy as np
-import itertools
 from sklearn.preprocessing import MinMaxScaler
-import matplotlib.pyplot as plt
 from scipy.optimize import minimize
 import json
 
-#*****
-#This approach adapts the edge crossing minimization method (https://arxiv.org/abs/1210.2041 and https://dankerrigan.me/algs-2-project/)  for parallel coordinates 
-#*****
+# #*****
+# #This approach adapts the edge crossing minimization method (https://arxiv.org/abs/1210.2041 and https://dankerrigan.me/algs-2-project/)  for parallel coordinates 
+# #*****
 
-# Load the CSV file
 file_path = '../api/dataset/rounded_fairness_metrics_results.csv'
 df = pd.read_csv(file_path)
 
-# Normalize data
+# Normalize the data
 scaler = MinMaxScaler()
 df[df.columns] = scaler.fit_transform(df[df.columns])
 
-# Function to count crossings between two adjacent axes
+#Counts the number of line crossings between two axes 
+#(To determine how many times lines connecting data points between two axes intersect (or cross each other).)
 def count_crossings(df, axis1, axis2):
     crossings = 0
-    for i, j in itertools.combinations(range(len(df)), 2):
-        x1 = df.iloc[i][axis1]
-        x2 = df.iloc[j][axis1]
-        y1 = df.iloc[i][axis2]
-        y2 = df.iloc[j][axis2]
-        if (x1 - x2) * (y1 - y2) < 0:
-            crossings += 1
+    num_points = len(df)
+    for i in range(num_points):
+            for j in range(i + 1, num_points):
+                # Check if the lines between the points on the two axes cross
+                if (df.iloc[i, axis1] - df.iloc[j, axis1]) * (df.iloc[i, axis2] - df.iloc[j, axis2]) < 0:
+                    crossings += 1
+                
     return crossings
 
-# Function to calculate total crossings for a given order of axes
+#Calculates the total number of crossings for a given order of axes.
 def total_crossings(df, order):
-    crossings = 0
+    total = 0
     for i in range(len(order) - 1):
-        crossings += count_crossings(df, order[i], order[i + 1])
-    return crossings
+        total += count_crossings(df, order[i], order[i + 1])
+    return total
 
-# Function to optimize the axis order
+#Objective function to minimize the total crossings.
+def objective(order, df):
+    order = np.argsort(order)
+    return total_crossings(df, order)
+
+#Finds the optimal order of axes to minimize crossings.
 def optimize_axis_order(df):
-    n = len(df.columns)
+    num_axes = len(df.columns)
     
-    # Objective function to minimize
-    def objective(order):
-        order = np.argsort(order)
-        return total_crossings(df, order)
+    # Initial guess for the optimization
+    initial_guess = np.arange(num_axes)
     
-    # Initial guess
-    initial_order = np.arange(n)
+    # Bounds for each axis index
+    #bounds = [(0, num_axes - 1) for _ in range(num_axes)]
+    lower_bound = 0
+    upper_bound = num_axes - 1
+    bounds = [(lower_bound, upper_bound) for _ in range(num_axes)]
+
+    result = minimize(objective, initial_guess, args=(df,), bounds=bounds, method='L-BFGS-B')  #optimization algorithm used by the scipy.optimize.minimize function
     
-    # Bounds for the optimization
-    bounds = [(0, n-1) for _ in range(n)]
-    
-    # Optimization
-    result = minimize(objective, initial_order, bounds=bounds, method='L-BFGS-B') #optimization algorithm used by the scipy.optimize.minimize function
-    
-    # Get the optimized order
+    # result.x gives the order that results in the fewest crossings. .x Contains the solution array (optimized values of the variables).
+    print(result.x)
     optimized_order = np.argsort(result.x)
+    #print(optimized_order)
     optimized_order_column = df.columns[optimized_order]
-    optimized_order_indices_json = json.dumps(optimized_order_column.tolist())
-    return optimized_order_indices_json
+    optimized_order_json = json.dumps(optimized_order_column.tolist())
+    
+    return optimized_order_json
 
-# # Find optimized order
-#optimized_order = optimize_axis_order(df)
-# optimized_order = df.columns[optimized_order_indices]
+# Get the optimized order of axes
+optimized_order_indices_json = optimize_axis_order(df)
 
-# print(optimized_order)
-
-#print(optimized_order)
+# Print the JSON string
+print(optimized_order_indices_json)
 
