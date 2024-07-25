@@ -5,7 +5,7 @@ from scipy.optimize import minimize
 import json
 
 # #*****
-# #This approach adapts the edge crossing minimization method (https://arxiv.org/abs/1210.2041 and https://dankerrigan.me/algs-2-project/)  for parallel coordinates 
+# #This approach adapts the edge crossing minimization method (https://diglib.eg.org/items/1e778bb2-0e99-4efe-85d3-cf1eb1297eb8 and https://dankerrigan.me/algs-2-project/)  for parallel coordinates 
 # #*****
 
 file_path = '../api/dataset/rounded_fairness_metrics_results.csv'
