@@ -1461,6 +1461,9 @@ class App extends React.Component {
         }
       }
     }
+    
+    newarr.push("None")
+
     let seriesData = [];
     const step1data = this.state.step1Data;
     const groupIds = this.state.scatterData.groupIDs;
@@ -1633,6 +1636,9 @@ class App extends React.Component {
     let treeAncestors = [];
     treeAncestors = this.getNamesNode(treeAncestors, currentNode);
     treeAncestors = treeAncestors.reverse();
+    if (treeAncestors.length == 0) {
+      treeAncestors.push("None");
+    }
     const url = apiDomain + "step6";
     let p = { data: treeAncestors.join("-") };
 
