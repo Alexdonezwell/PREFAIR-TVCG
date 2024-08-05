@@ -718,7 +718,7 @@ def clustersrate():
     selectedIds = passedInteractionsJson["selectedIds"]
     #print("clustersrate > selectedIds", selectedIds, len(selectedIds))
     if len(selectedIds) == 0:
-        selectedIds = [i for i in range(0, 100)]
+        selectedIds = [i for i in range(0, 101)]
     kmeans = {}
     for i in range(2, 7):
         kmeans[i] = ml.silhouette_samples(ml.kmeans(i, selectedIds))
